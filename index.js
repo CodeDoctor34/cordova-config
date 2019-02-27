@@ -149,10 +149,10 @@ module.exports = (function () {
 	 *
 	 * @param {string}	version		The version number.
 	 */
-	Config.prototype.setVersion = function (version) {
+	Config.prototype.setVersion = function (version, ignoreCheck) {
 		var regex = new RegExp('^[0-9]+.[0-9]+.[0-9]+$');
 
-		if (!regex.test(version)) {
+		if (!ignoreCheck && !regex.test(version)) {
 			// If the version is not valid, throw an error.
 			throw new Error('Please provide a valid version number.');
 		}
@@ -200,10 +200,10 @@ module.exports = (function () {
 	 *
 	 * @param {string}	version		The iOS CFBundleVersion.
 	 */
-	Config.prototype.setIOSBundleVersion = function (version) {
+	Config.prototype.setIOSBundleVersion = function (version, ignoreCheck) {
 		var regex = new RegExp('^[1-9][0-9]*(.[0-9]+){0,2}$');
 
-		if (!regex.test(version)) {
+		if (!ignoreCheck && !regex.test(version)) {
 			// If the version is not valid, throw an error.
 			throw new Error('Please provide a valid iOS bundle version number.');
 		}
